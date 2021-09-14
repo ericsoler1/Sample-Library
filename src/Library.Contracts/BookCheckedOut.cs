@@ -2,8 +2,12 @@ namespace Library.Contracts
 {
     using System;
 
+    public interface BookCheckedOutParent
+    {
+        Guid ParentId { get;  }
+    }
 
-    public interface BookCheckedOut
+    public interface BookCheckedOut : BookCheckedOutParent
     {
         Guid CheckOutId { get; }
 

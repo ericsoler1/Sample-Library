@@ -1,3 +1,5 @@
+using Library.Contracts;
+
 namespace Library.Components.Tests
 {
     using System;
@@ -55,6 +57,8 @@ namespace Library.Components.Tests
             TestHarness = Provider.GetRequiredService<InMemoryTestHarness>();
             TestHarness.OnConfigureInMemoryBus += configurator =>
             {
+                configurator.Message<BookCheckedOut>(x => x.SetEntityName("events"));
+                configurator.Message<BookCheckedOutParent>(x => x.SetEntityName("events"));
                 configurator.UseInMemoryScheduler(out _scheduler);
             };
 
